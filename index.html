@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Library Roulette</title>
+    <link rel="shortcut icon" type="image/png" href="https://cdn.glitch.com/a6fc9041-4cc0-4343-8259-b8ad415bdb27%2Fgun.png?1551373542820" />
+  <style>
+    body {
+      text-align: center;
+      color: white;
+      padding: 0px;
+      margin: 0px
+    }
+    button {
+      width: 100vw;
+      height: 100vh;
+      margin: 0px;
+      padding: 0px;
+      background-color: white;
+    }
+    img {
+      -webkit-transition: all 5s ease;
+      -moz-transition: all 5s ease;
+      -ms-transition: all 5s ease;
+      -o-transition: all 5s ease;
+      transition: all 5s ease;
+    }
+  </style>
+</head>
+
+<body>
+  <button onclick="spin()"><img src="https://cdn.glitch.com/a6fc9041-4cc0-4343-8259-b8ad415bdb27%2Frevolver.png?1551380930490"/></button>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.1/howler.min.js"></script>
+    <script>
+      var sounds = ['https://cdn.glitch.com/a6fc9041-4cc0-4343-8259-b8ad415bdb27%2Fdaddy.mp3?1551380372022', 'https://cdn.glitch.com/a6fc9041-4cc0-4343-8259-b8ad415bdb27%2Flazer.mp3?1551380372097', 'https://cdn.glitch.com/a6fc9041-4cc0-4343-8259-b8ad415bdb27%2Fpingas.mp3?1551380372179', 'https://cdn.glitch.com/a6fc9041-4cc0-4343-8259-b8ad415bdb27%2Fhorn.mp3?1551380372290', 'https://cdn.glitch.com/a6fc9041-4cc0-4343-8259-b8ad415bdb27%2Ffart.mp3?1551383156531'];
+      var image = $('img');
+      var button = $('button');
+      function spin() {
+        var angle = (image.data('angle') + 3600) || 3600;
+        image.css({'transform': 'rotate(' + angle + 'deg)'});
+        image.data('angle', angle);
+        window.setTimeout(choose, 5500);
+      }
+
+      function choose() {
+        var choice = Math.floor(Math.random() * 5);
+        if(choice > 3) {
+          button.css('background-color', 'red');
+          var sound = new Howl({
+            src: sounds[Math.floor(Math.random() * sounds.length)],
+            volume: 1,
+            onend: function () {
+              button.css('background-color', 'white');
+            }
+          });
+          sound.play();
+        }else {
+          button.css('background-color', 'lime');
+          window.setTimeout(function() { button.css('background-color', 'white'); }, 300);
+        }
+      }
+    </script>
+</body>
+
+</html>
