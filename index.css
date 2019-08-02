@@ -13,6 +13,11 @@ button {
   padding: 0px;
   background-color: white;
 }
+button:active,
+button:hover {
+  border: none;
+  box-shadow: none;
+}
 img {
   -webkit-transition: all 5s ease;
   -moz-transition: all 5s ease;
@@ -20,6 +25,24 @@ img {
   -o-transition: all 5s ease;
   transition: all 5s ease;
   height: 200px;
+}
+#difficulty {
+  z-index: 10;
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: black;
+  text-align: center;
+  padding: 30px;
+}
+#difficulty h4 {
+  margin: 0px;
+}
+#difficulty ul {
+  padding: 10px 30px;
+  list-style: none !important;
+  text-align: left;
+  margin: 0px;
 }
 #footer {
   position: fixed;
@@ -35,6 +58,17 @@ img {
   display: block;
 }
 @media (min-width: 320px) and (max-width: 1024px) {
+  #difficulty h4 {
+    font-size: 4em;
+  }
+  #difficulty ul {
+    font-size: 3em;
+  }
+  #difficulty ul li input {
+    transform: scale(3);
+    margin: 20px;
+    vertical-align: middle;
+  }
   #footer-copy {
     font-size: 30px;
   }
@@ -45,7 +79,7 @@ img {
     margin: 20px auto;
     padding: 10px !important;
   }
-  .github-logo{
+  .github-logo {
     width: 50px !important;
   }
 }
