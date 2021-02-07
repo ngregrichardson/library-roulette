@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Flex,
   Stack,
@@ -22,10 +22,13 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   Button,
+  useColorMode,
+  useTheme,
 } from "@chakra-ui/react";
-import { HamburgerIcon } from "@chakra-ui/icons";
+import { FiMenu } from "react-icons/all";
 import ChamberGroup from "./components/chamberGroup";
 import DivitGroup from "./components/divitGroup";
+import ThemeToggle from "./components/toggleTheme";
 import useRandomSounds from "./utils/hooks/useRandomSounds";
 
 const difficulties = [
@@ -40,6 +43,8 @@ const difficulties = [
 const spinSpeed = 1;
 
 const App = () => {
+  const { colorMode } = useColorMode();
+  const theme = useTheme();
   const revolverRef = useRef();
   const [rotation, setRotation] = useState(0);
   const [difficulty, setDifficulty] = useState(0);
@@ -51,6 +56,14 @@ const App = () => {
   const isMobile = useBreakpointValue({ base: true, md: false });
   const menuButtonRef = useRef();
   const confirmRef = useRef();
+
+  useEffect(() => {
+    document.body.style.backgroundColor =
+      colorMode === "light"
+        ? theme.colors.white["500"]
+        : theme.colors.black["500"];
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [colorMode]);
 
   const handlePlaySound = () => {
     playRandomSound();
@@ -139,11 +152,11 @@ const App = () => {
             right: 30,
           })
         ) : (
-          <Popover>
+          <Popover placement={"bottom-start"}>
             <PopoverTrigger>
               <IconButton
                 ref={menuButtonRef}
-                icon={<HamburgerIcon />}
+                icon={<FiMenu />}
                 position={"absolute"}
                 top={15}
                 right={15}
@@ -152,7 +165,13 @@ const App = () => {
               </IconButton>
             </PopoverTrigger>
             <PopoverContent>
-              <PopoverBody>{renderDifficultySettings({})}</PopoverBody>
+              <PopoverBody
+                backgroundColor={
+                  colorMode === "light" ? undefined : "black.500"
+                }
+              >
+                {renderDifficultySettings({})}
+              </PopoverBody>
             </PopoverContent>
           </Popover>
         )}
@@ -285,6 +304,7 @@ const App = () => {
         isExternal
         href={"https://iamnoah.dev"}
         textAlign={"center"}
+        paddingY={"15px"}
       >
         &copy; Noah Richardson {new Date().getFullYear()}
       </Text>
@@ -293,10 +313,14 @@ const App = () => {
         onClose={onConfirmClose}
         isOpen={isConfirmOpen}
         isCentered
+        closeOnOverlayClick={false}
+        closeOnEsc={false}
       >
         <AlertDialogOverlay />
 
-        <AlertDialogContent>
+        <AlertDialogContent
+          backgroundColor={colorMode === "light" ? undefined : "black.500"}
+        >
           <AlertDialogHeader>Before you start...</AlertDialogHeader>
           <AlertDialogBody>
             VOLUME WARNING: This game should NOT be played using headphones, as
@@ -305,12 +329,17 @@ const App = () => {
             places is on you.
           </AlertDialogBody>
           <AlertDialogFooter>
-            <Button ref={confirmRef} onClick={onConfirmClose}>
+            <Button
+              ref={confirmRef}
+              onClick={onConfirmClose}
+              colorScheme={"red"}
+            >
               Got it
             </Button>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
+      <ThemeToggle />
     </>
   );
 };
