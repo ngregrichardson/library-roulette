@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import {
   Flex,
   Stack,
@@ -70,18 +70,22 @@ const App = () => {
         if (baseRotation === 120) {
           return handlePlaySound();
         }
+      // eslint-disable-next-line no-fallthrough
       case 3:
         if (baseRotation === 180) {
           return handlePlaySound();
         }
+      // eslint-disable-next-line no-fallthrough
       case 2:
         if (baseRotation === 240) {
           return handlePlaySound();
         }
+      // eslint-disable-next-line no-fallthrough
       case 1:
         if (baseRotation === 300) {
           return handlePlaySound();
         }
+      // eslint-disable-next-line no-fallthrough
       case 0:
         if (baseRotation === 0) {
           return handlePlaySound();
