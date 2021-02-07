@@ -160,9 +160,8 @@ const App = () => {
                 position={"absolute"}
                 top={15}
                 right={15}
-              >
-                Trigger
-              </IconButton>
+                boxSize={"50px"}
+              />
             </PopoverTrigger>
             <PopoverContent>
               <PopoverBody
