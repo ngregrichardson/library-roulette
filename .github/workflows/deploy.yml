@@ -1,0 +1,23 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, primary]
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build
+        run: yarn build
+
+      - name: Restart PM2
+        run: pm2 restart library-roulette

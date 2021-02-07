@@ -1,2 +1,2 @@
 ## Library Roulette
-Library Roulette is a simple game to play in the libaryr or in a quiet, crowded place. Pass it aruond the table and have each person simply hit the button. If the screen flashed green, you're safe! If the screen flashes red, be prepared for a loud sound! For best experience, use a device with loud speakers. **DO NOT USE WITH HEADPHONES!**
+Library Roulette is a simple game to play in the library or in a quiet, crowded place. Pass it around the table and have each person simply click on the wheel. If you land on an empty slot, then you're safe! You can pass it onto the next person. If you have a bullet in your slot, then get ready! For best experience, use a device with loud speakers. **DO NOT USE WITH HEADPHONES!**
