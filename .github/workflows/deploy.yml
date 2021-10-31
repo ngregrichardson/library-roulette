@@ -2,7 +2,7 @@ name: Deploy
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
 
 jobs:
@@ -13,11 +13,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Install dependencies
-        run: yarn install
-
-      - name: Build
-        run: yarn build
-
-      - name: Restart PM2
-        run: pm2 restart library-roulette
+      - name: Stop Docker
+        run: |
+          docker stop library-roulette
+          docker rm library-roulette
+        continue-on-error: true
+      - name: Build Docker Image
+        run: docker build -t library-roulette .
+      - name: Start Docker
+        run: docker run -d -p 5000:5000 --name library-roulette library-roulette
