@@ -11,6 +11,7 @@ const Divit = (props) => {
       top={"50%"}
       transform={"translate(-50%, -50%)"}
       position={"absolute"}
+      transition={"background-color 0.2s ease 0s"}
       {...props}
     />
   );
