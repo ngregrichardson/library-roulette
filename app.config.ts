@@ -6,7 +6,10 @@ export default defineConfig({
         plugins: [
             devtools({
                 autoname: true
-            })
+            }),
         ]
+    },
+    server: {
+        preset: 'cloudflare-pages'
     }
 });
