@@ -34,6 +34,8 @@
     --radius: 0.5rem;
 
     --cylinder: 157 8% 20%;
+
+    --safe: 120 100% 15%;
 }
 
 @media(prefers-color-scheme: dark) {
@@ -67,6 +69,8 @@
         --accent: 198, 100%, 62%;
 
         --cylinder: 206 9% 66%;
+
+        --safe: 120, 100%, 42%;
     }
 }
 

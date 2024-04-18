@@ -16,6 +16,7 @@ module.exports = {
 				accent: 'hsl(var(--accent))',
 				destructive: 'hsl(var(--destructive))',
 				cylinder: 'hsl(var(--cylinder))',
+				safe: 'hsl(var(--safe))',
 			},
 			keyframes: {
 				'safe': {
