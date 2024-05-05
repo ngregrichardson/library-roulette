@@ -1,6 +1,7 @@
 import { Title } from "@solidjs/meta";
+import umami from "@umami/node";
 import { Info } from "lucide-solid";
-import { createSignal, onMount } from "solid-js";
+import { DEV, createSignal, onMount } from "solid-js";
 import { Portal } from "solid-js/web";
 import DifficultyPicker from "~/components/DifficultyPicker";
 import Safe from "~/components/Safe";
@@ -57,7 +58,9 @@ export default function Home() {
           handleSafe();
         }
 
-        // trackEvent('spin', { difficulty: DIFFICULTIES[difficulty()], sound });
+        if(!DEV) {
+          umami.track('spin', { difficulty: DIFFICULTIES[difficulty()], sound });
+        }
 
         spinner.style.transition = "none";
         spinner.style.transform = `rotateZ(${additionalSpins}deg)`;
