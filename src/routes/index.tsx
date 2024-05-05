@@ -1,5 +1,3 @@
-
-import { trackEvent } from "@aptabase/web";
 import { Title } from "@solidjs/meta";
 import { Info } from "lucide-solid";
 import { createSignal, onMount } from "solid-js";
@@ -59,7 +57,7 @@ export default function Home() {
           handleSafe();
         }
 
-        trackEvent('spin', { difficulty: DIFFICULTIES[difficulty()], sound });
+        // trackEvent('spin', { difficulty: DIFFICULTIES[difficulty()], sound });
 
         spinner.style.transition = "none";
         spinner.style.transform = `rotateZ(${additionalSpins}deg)`;
