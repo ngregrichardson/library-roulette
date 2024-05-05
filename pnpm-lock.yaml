@@ -20,9 +20,6 @@ dependencies:
   '@solidjs/start':
     specifier: ^1.0.0-rc.0
     version: 1.0.0-rc.0(solid-js@1.8.16)(vinxi@0.3.11)(vite@5.2.9)
-  '@umami/node':
-    specifier: ^0.2.0
-    version: 0.2.0
   autoprefixer:
     specifier: ^10.4.19
     version: 10.4.19(postcss@8.4.38)
@@ -1488,10 +1485,6 @@ packages:
 
   /@types/resolve@1.20.2:
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
-    dev: false
-
-  /@umami/node@0.2.0:
-    resolution: {integrity: sha512-01LtiIpHXLczvppYwu28Jds88yRUjDenAc5baSI1g/UN9lVSw1IXNCulax8D5CuiagWXRMMvzfRhw+JzOZOxQA==}
     dev: false
 
   /@vercel/nft@0.26.4:

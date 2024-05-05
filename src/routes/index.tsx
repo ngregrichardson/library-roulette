@@ -1,5 +1,4 @@
 import { Title } from "@solidjs/meta";
-import umami from "@umami/node";
 import { Info } from "lucide-solid";
 import { DEV, createSignal, onMount } from "solid-js";
 import { Portal } from "solid-js/web";
