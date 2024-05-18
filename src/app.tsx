@@ -1,18 +1,24 @@
 import { Router } from "@solidjs/router";
 import { FileRoutes } from "@solidjs/start/router";
-import { Suspense } from "solid-js";
+import { Suspense, onMount } from "solid-js";
 import Footer from "~/components/Footer";
 import "./app.css";
 import { MetaProvider } from "@solidjs/meta";
-import { createScriptLoader } from "@solid-primitives/script-loader";
+import { init, trackEvent } from "@aptabase/web";
 
 export default function App() {
-  createScriptLoader({
-    src: "https://stats.iamnoah.dev/script.js",
-    defer: true,
-    'data-website-id': '233d552f-a7ee-4ae6-a63d-c7cecbc43c01',
-    'data-domains': 'libraryroulette.iamnoah.dev'
+  onMount(() => {
+    if(import.meta.env.VITE_APTABASE_APP_KEY) {
+      init(import.meta.env.VITE_APTABASE_APP_KEY, {
+          host: "https://stats.iamnoah.dev"
+      });
+
+      trackEvent("view", {
+          path: "/"
+      });
+    }
   });
+  
   return (
     <MetaProvider>
       <Router

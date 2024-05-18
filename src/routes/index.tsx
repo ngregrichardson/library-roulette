@@ -1,3 +1,4 @@
+import { trackEvent } from "@aptabase/web";
 import { Title } from "@solidjs/meta";
 import { Info } from "lucide-solid";
 import { DEV, createSignal, onMount } from "solid-js";
@@ -58,7 +59,10 @@ export default function Home() {
         }
 
         if(!DEV) {
-          umami.track('spin', { difficulty: DIFFICULTIES[difficulty()], sound });
+          trackEvent("spin", {
+            difficulty: DIFFICULTIES[difficulty()],
+            sound
+          });
         }
 
         spinner.style.transition = "none";
